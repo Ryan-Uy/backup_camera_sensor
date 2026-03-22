@@ -14,13 +14,13 @@ with serial.Serial('COM3', 9600, timeout=1) as ser:
 
     while True:
         line = ser.readline().decode(errors='ignore').strip()
-        if not line:
+        if not line or not line.isdigit():
             continue
 
         level = int(line)
         now = time.time()
 
-        interval = {1 : 1, 2 : .75, 3: .5, 4: .25, 5: .15}
+        interval = {1 : 1, 2 : .75, 3 : .5, 4 : .25, 5 : .15}
 
         if level and now - last_beep_time >= interval[level]:
             beep.play()
