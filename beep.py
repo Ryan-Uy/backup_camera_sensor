@@ -26,6 +26,6 @@ with serial.Serial('COM3', 9600, timeout=1) as ser:
             beep.play()
             last_beep_time = now
             
-        if keyboard.is_pressed('q') or keyboard.is_pressed('esc'):
+        if keyboard.is_pressed('esc'):
             break
         
